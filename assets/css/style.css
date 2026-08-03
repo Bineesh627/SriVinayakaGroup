@@ -717,6 +717,56 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   .hero-title { font-size: 2.4rem; }
   .section-padding { padding: 60px 0; }
   .metrics-bar { margin-top: 20px; }
+
+  /* Mobile Navbar Toggler & Icon */
+  .navbar-toggler {
+    padding: 4px 8px;
+    border: none;
+  }
+  .navbar-toggler i, .color-navy {
+    color: var(--navy-main) !important;
+  }
+  .navbar-svg.scrolled .navbar-toggler i {
+    color: #ffffff !important;
+  }
+
+  /* Mobile Dropdown Menu Card */
+  .navbar-collapse {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    box-shadow: 0 16px 36px rgba(7, 19, 37, 0.18);
+    border: 1px solid rgba(11, 29, 58, 0.1);
+  }
+
+  .navbar-svg.scrolled .navbar-collapse {
+    background: var(--navy-main);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .navbar-nav .nav-link {
+    color: var(--navy-main) !important;
+    padding: 10px 14px !important;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link.active {
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--gold-hover) !important;
+  }
+
+  .navbar-svg.scrolled .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .navbar-svg.scrolled .navbar-nav .nav-link:hover,
+  .navbar-svg.scrolled .navbar-nav .nav-link.active {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--gold-main) !important;
+  }
 }
 
 /* ==========================================================================

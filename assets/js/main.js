@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterAnimation();
   initMarqueeTicker();
   initFaqAccordion();
+  initMobileNavbar();
 });
 
 /* ==========================================================================
@@ -470,5 +471,42 @@ function initFaqAccordion() {
         targetCollapse.classList.add('show');
       }
     });
+  });
+}
+/* ==========================================================================
+   14. Mobile Navigation Toggle & Auto-Close
+   ========================================================================== */
+function initMobileNavbar() {
+  const toggler = document.querySelector('.navbar-toggler');
+  const collapse = document.querySelector('#navbarContent');
+  if (!toggler || !collapse) return;
+
+  toggler.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isShown = collapse.classList.contains('show');
+    if (isShown) {
+      collapse.classList.remove('show');
+      toggler.setAttribute('aria-expanded', 'false');
+    } else {
+      collapse.classList.add('show');
+      toggler.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Auto-close mobile menu when clicking nav links
+  const navLinks = collapse.querySelectorAll('.nav-link, .btn');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      collapse.classList.remove('show');
+      toggler.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Auto-close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!collapse.contains(e.target) && !toggler.contains(e.target)) {
+      collapse.classList.remove('show');
+      toggler.setAttribute('aria-expanded', 'false');
+    }
   });
 }
