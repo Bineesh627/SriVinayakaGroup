@@ -38,6 +38,13 @@
 }
 
 /* Restored Crisp Base Setup (16px base font for natural proportion) */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  position: relative;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -48,14 +55,15 @@ body {
   color: var(--text-dark);
   background-color: var(--bg-light);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, .font-heading {
+h1, h2, h3, h4, h5, h6, .font-heading, .section-title, .hero-title {
   font-family: 'Outfit', system-ui, -apple-system, sans-serif;
   font-weight: 700;
   color: var(--navy-main);
   letter-spacing: -0.02em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Custom Scrollbar */
@@ -295,6 +303,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   color: #ffffff;
   padding: 90px 0 60px;
   position: relative;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .breadcrumb-item a { color: var(--gold-main); text-decoration: none; font-weight: 500; }
@@ -821,6 +831,13 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .reveal-visible {
   opacity: 1 !important;
   transform: translateY(0) translateX(0) scale(1) !important;
+}
+
+/* Prevent horizontal scroll overflow on mobile viewports */
+@media (max-width: 991.98px) {
+  .reveal-fade-left, .reveal-fade-right {
+    transform: translateY(30px);
+  }
 }
 
 /* Interactive Hover & Button Sheen Effects */
