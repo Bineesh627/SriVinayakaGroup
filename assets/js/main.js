@@ -4,20 +4,23 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initActiveNavHighlight();
-  initNavbarScroll();
-  initParcelEstimator();
-  initBusSearch();
-  initSeatSelector();
-  initContactForm();
-  initScrollReveal();
-  initCounterAnimation();
-  initMarqueeTicker();
-  initFaqAccordion();
-  initMobileNavbar();
-  initGalleryFilter();
-  initGalleryLightbox();
-  initRouteSchedule();
+  const safeInit = (fn) => {
+    try { fn(); } catch (err) { console.warn('Init error in ' + fn.name, err); }
+  };
+  safeInit(initActiveNavHighlight);
+  safeInit(initNavbarScroll);
+  safeInit(initParcelEstimator);
+  safeInit(initBusSearch);
+  safeInit(initSeatSelector);
+  safeInit(initContactForm);
+  safeInit(initScrollReveal);
+  safeInit(initCounterAnimation);
+  safeInit(initMarqueeTicker);
+  safeInit(initFaqAccordion);
+  safeInit(initMobileNavbar);
+  safeInit(initGalleryFilter);
+  safeInit(initGalleryLightbox);
+  safeInit(initRouteSchedule);
 });
 
 /* ==========================================================================
@@ -558,8 +561,6 @@ function initGalleryLightbox() {
 
   if (!galleryCards.length || !lightboxModal || !lightboxImg) return;
 
-  const modal = new bootstrap.Modal(lightboxModal);
-
   galleryCards.forEach(card => {
     card.addEventListener('click', () => {
       const img = card.querySelector('img');
@@ -572,7 +573,14 @@ function initGalleryLightbox() {
         if (lightboxCaption) {
           lightboxCaption.textContent = `${title} ${sub ? '— ' + sub : ''}`;
         }
-        modal.show();
+        try {
+          if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+            const modal = bootstrap.Modal.getInstance(lightboxModal) || new bootstrap.Modal(lightboxModal);
+            modal.show();
+          }
+        } catch (e) {
+          console.warn('Bootstrap modal error:', e);
+        }
       }
     });
   });
@@ -581,34 +589,118 @@ function initGalleryLightbox() {
 /* ==========================================================================
    17. Route Timetable Switcher & Instant Stop Search
    ========================================================================== */
+function switchRouteTab(route) {
+  const tabBangalore = document.getElementById('tabBangaloreCoorg');
+  const tabCoorg = document.getElementById('tabCoorgBangalore');
+  const panelBangalore = document.getElementById('panelBangaloreCoorg');
+  const panelCoorg = document.getElementById('panelCoorgBangalore');
+  const searchInput = document.getElementById('stopSearchInput');
+
+  const timingPill1 = document.getElementById('routeTimingPill1');
+  const timingPill2 = document.getElementById('routeTimingPill2');
+
+  const isCoorgToBangalore = (route === 'coorg-bangalore' || route === 'coorg' || route === 2);
+
+  if (isCoorgToBangalore) {
+    if (tabCoorg) {
+      tabCoorg.classList.add('active');
+    }
+    if (tabBangalore) {
+      tabBangalore.classList.remove('active');
+    }
+    if (panelCoorg) {
+      panelCoorg.classList.remove('d-none');
+      panelCoorg.style.display = 'block';
+    }
+    if (panelBangalore) {
+      panelBangalore.classList.add('d-none');
+      panelBangalore.style.display = 'none';
+    }
+    if (timingPill1) {
+      timingPill1.innerHTML = '<i class="bi bi-clock-fill"></i> Bus 1: 21:00 (9:00 PM)';
+    }
+    if (timingPill2) {
+      timingPill2.innerHTML = '<i class="bi bi-clock-fill"></i> Bus 2: 21:50 (9:50 PM)';
+    }
+  } else {
+    if (tabBangalore) {
+      tabBangalore.classList.add('active');
+    }
+    if (tabCoorg) {
+      tabCoorg.classList.remove('active');
+    }
+    if (panelBangalore) {
+      panelBangalore.classList.remove('d-none');
+      panelBangalore.style.display = 'block';
+    }
+    if (panelCoorg) {
+      panelCoorg.classList.add('d-none');
+      panelCoorg.style.display = 'none';
+    }
+    if (timingPill1) {
+      timingPill1.innerHTML = '<i class="bi bi-clock-fill"></i> Bus 1: 21:30 (9:30 PM)';
+    }
+    if (timingPill2) {
+      timingPill2.innerHTML = '<i class="bi bi-clock-fill"></i> Bus 2: 21:50 (9:50 PM)';
+    }
+  }
+
+  if (searchInput) {
+    searchInput.value = '';
+    filterStops('');
+  }
+}
+window.switchRouteTab = switchRouteTab;
+
+function filterStops(query) {
+  const activePanel = document.querySelector('.stops-panel:not(.d-none)');
+  if (!activePanel) return;
+
+  const stopItems = activePanel.querySelectorAll('.stop-card-item');
+  let matchCount = 0;
+
+  stopItems.forEach(item => {
+    const stopName = item.querySelector('.stop-name')?.textContent.toLowerCase() || '';
+    const stopLandmark = item.querySelector('.stop-landmark')?.textContent.toLowerCase() || '';
+    const stopTime = item.querySelector('.stop-time-chip')?.textContent.toLowerCase() || '';
+
+    if (query === '' || stopName.includes(query) || stopLandmark.includes(query) || stopTime.includes(query)) {
+      item.style.display = 'flex';
+      if (query !== '') {
+        item.classList.add('stop-highlight');
+      } else {
+        item.classList.remove('stop-highlight');
+      }
+      matchCount++;
+    } else {
+      item.style.display = 'none';
+      item.classList.remove('stop-highlight');
+    }
+  });
+
+  const noResultsMsg = activePanel.querySelector('.no-stops-found');
+  if (noResultsMsg) {
+    noResultsMsg.style.display = (matchCount === 0 && query !== '') ? 'block' : 'none';
+  }
+}
+window.filterStops = filterStops;
+
 function initRouteSchedule() {
   const tabBangaloreCoorg = document.getElementById('tabBangaloreCoorg');
   const tabCoorgBangalore = document.getElementById('tabCoorgBangalore');
-  const panelBangaloreCoorg = document.getElementById('panelBangaloreCoorg');
-  const panelCoorgBangalore = document.getElementById('panelCoorgBangalore');
   const searchInput = document.getElementById('stopSearchInput');
 
-  if (tabBangaloreCoorg && tabCoorgBangalore && panelBangaloreCoorg && panelCoorgBangalore) {
-    tabBangaloreCoorg.addEventListener('click', () => {
-      tabBangaloreCoorg.classList.add('active');
-      tabCoorgBangalore.classList.remove('active');
-      panelBangaloreCoorg.classList.remove('d-none');
-      panelCoorgBangalore.classList.add('d-none');
-      if (searchInput) {
-        searchInput.value = '';
-        filterStops('');
-      }
+  if (tabBangaloreCoorg) {
+    tabBangaloreCoorg.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchRouteTab('bangalore-coorg');
     });
+  }
 
-    tabCoorgBangalore.addEventListener('click', () => {
-      tabCoorgBangalore.classList.add('active');
-      tabBangaloreCoorg.classList.remove('active');
-      panelCoorgBangalore.classList.remove('d-none');
-      panelBangaloreCoorg.classList.add('d-none');
-      if (searchInput) {
-        searchInput.value = '';
-        filterStops('');
-      }
+  if (tabCoorgBangalore) {
+    tabCoorgBangalore.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchRouteTab('coorg-bangalore');
     });
   }
 
@@ -618,37 +710,6 @@ function initRouteSchedule() {
       filterStops(query);
     });
   }
-
-  function filterStops(query) {
-    const activePanel = document.querySelector('.stops-panel:not(.d-none)');
-    if (!activePanel) return;
-
-    const stopItems = activePanel.querySelectorAll('.stop-card-item');
-    let matchCount = 0;
-
-    stopItems.forEach(item => {
-      const stopName = item.querySelector('.stop-name')?.textContent.toLowerCase() || '';
-      const stopLandmark = item.querySelector('.stop-landmark')?.textContent.toLowerCase() || '';
-      const stopTime = item.querySelector('.stop-time-chip')?.textContent.toLowerCase() || '';
-
-      if (query === '' || stopName.includes(query) || stopLandmark.includes(query) || stopTime.includes(query)) {
-        item.style.display = 'flex';
-        if (query !== '') {
-          item.classList.add('stop-highlight');
-        } else {
-          item.classList.remove('stop-highlight');
-        }
-        matchCount++;
-      } else {
-        item.style.display = 'none';
-        item.classList.remove('stop-highlight');
-      }
-    });
-
-    const noResultsMsg = activePanel.querySelector('.no-stops-found');
-    if (noResultsMsg) {
-      noResultsMsg.style.display = matchCount === 0 && query !== '' ? 'block' : 'none';
-    }
-  }
 }
+
 

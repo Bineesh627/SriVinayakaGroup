@@ -183,10 +183,10 @@
       <div class="route-explorer-container mb-5 reveal-on-scroll">
         <!-- Direction Navigation Tabs -->
         <div class="route-direction-nav">
-          <button type="button" id="tabBangaloreCoorg" class="route-nav-tab active">
+          <button type="button" id="tabBangaloreCoorg" class="route-nav-tab active" onclick="switchRouteTab('bangalore-coorg')">
             <i class="bi bi-arrow-right-circle-fill text-warning me-1"></i> 1. Bangalore ➔ Coorg (Madikeri)
           </button>
-          <button type="button" id="tabCoorgBangalore" class="route-nav-tab">
+          <button type="button" id="tabCoorgBangalore" class="route-nav-tab" onclick="switchRouteTab('coorg-bangalore')">
             <i class="bi bi-arrow-left-circle-fill text-warning me-1"></i> 2. Madikeri (Coorg) ➔ Bangalore
           </button>
         </div>
@@ -198,8 +198,8 @@
             <span class="fw-bold font-heading fs-6 text-white"><i class="bi bi-bus-front-fill text-warning me-2"></i>2 Buses Every Night</span>
           </div>
           <div class="d-flex flex-wrap gap-2">
-            <span class="fixed-timing-pill"><i class="bi bi-clock-fill"></i> Bus 1: 21:30 (9:30 PM)</span>
-            <span class="fixed-timing-pill"><i class="bi bi-clock-fill"></i> Bus 2: 21:50 (9:50 PM)</span>
+            <span id="routeTimingPill1" class="fixed-timing-pill"><i class="bi bi-clock-fill"></i> Bus 1: 21:30 (9:30 PM)</span>
+            <span id="routeTimingPill2" class="fixed-timing-pill"><i class="bi bi-clock-fill"></i> Bus 2: 21:50 (9:50 PM)</span>
             <span class="badge bg-success d-inline-flex align-items-center"><i class="bi bi-check-circle-fill me-1"></i>100% Fixed Time</span>
           </div>
         </div>
