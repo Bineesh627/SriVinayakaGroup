@@ -877,3 +877,403 @@ h1, h2, h3, h4, h5, h6, .font-heading, .section-title, .hero-title {
 .tab-pane.fade {
   transition: opacity 0.3s linear, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Custom Navy & Gold Utility Classes */
+.bg-navy {
+  background-color: var(--navy-main) !important;
+}
+.text-navy {
+  color: var(--navy-main) !important;
+}
+.bg-gold {
+  background-color: var(--gold-main) !important;
+}
+.text-gold {
+  color: var(--gold-main) !important;
+}
+
+/* ==========================================================================
+   Video Testimonials System
+   ========================================================================== */
+.video-testimonial-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(11, 29, 58, 0.08);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.video-testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold-main);
+}
+
+.video-player-container {
+  position: relative;
+  background: #000;
+  width: 100%;
+  aspect-ratio: 9 / 12;
+  max-height: 440px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-player-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-overlay-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: rgba(7, 19, 37, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--gold-main);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.video-info-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   Fleet & Interior Photo Gallery
+   ========================================================================== */
+.gallery-filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.gallery-filter-btn {
+  background: #ffffff;
+  color: var(--navy-main);
+  border: 1.5px solid rgba(11, 29, 58, 0.15);
+  padding: 9px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.gallery-filter-btn:hover {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: var(--gold-main);
+  color: var(--navy-main);
+}
+
+.gallery-filter-btn.active {
+  background: var(--navy-main);
+  color: var(--gold-main);
+  border-color: var(--navy-main);
+  box-shadow: 0 4px 14px rgba(11, 29, 58, 0.25);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.gallery-card {
+  position: relative;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: #ffffff;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.07);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 19, 37, 0.88) 0%, rgba(7, 19, 37, 0.2) 60%, transparent 100%);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay-title {
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.gallery-overlay-sub {
+  color: var(--gold-main);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.gallery-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(7, 19, 37, 0.85);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  z-index: 1;
+  border-left: 3px solid var(--gold-main);
+}
+
+/* Lightbox Modal */
+#galleryLightboxModal .modal-content {
+  background: rgba(7, 19, 37, 0.96);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--border-radius);
+}
+
+#galleryLightboxModal .modal-body {
+  padding: 15px;
+  text-align: center;
+}
+
+#galleryLightboxModal img {
+  max-height: 80vh;
+  width: auto;
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   Comprehensive Interactive Route & Timetable Explorer
+   ========================================================================== */
+.route-explorer-container {
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(11, 29, 58, 0.08);
+  overflow: hidden;
+}
+
+.route-direction-nav {
+  display: flex;
+  background: var(--navy-dark);
+  padding: 8px;
+  gap: 8px;
+}
+
+.route-nav-tab {
+  flex: 1;
+  text-align: center;
+  padding: 14px 20px;
+  color: rgba(255, 255, 255, 0.75);
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.route-nav-tab:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.route-nav-tab.active {
+  background: var(--gold-main);
+  color: var(--navy-dark);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+}
+
+.route-fixed-times-bar {
+  background: linear-gradient(135deg, var(--navy-main) 0%, var(--navy-light) 100%);
+  padding: 16px 24px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fixed-timing-pill {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid var(--gold-main);
+  color: var(--gold-main);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stop-search-wrapper {
+  padding: 20px 24px 10px 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.stop-search-input {
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  padding: 12px 18px 12px 45px;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+}
+
+.stop-search-input:focus {
+  border-color: var(--navy-main);
+  box-shadow: 0 0 0 3px rgba(11, 29, 58, 0.12);
+}
+
+.stops-table-container {
+  padding: 20px 24px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.stop-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: var(--transition-fast);
+}
+
+.stop-card-item:hover {
+  background: #ffffff;
+  border-color: var(--gold-main);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.stop-card-item.stop-highlight {
+  background: #fffbeb !important;
+  border-color: var(--gold-main) !important;
+  box-shadow: 0 0 0 2px var(--gold-main) !important;
+}
+
+.stop-num-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy-main);
+  color: var(--gold-main);
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stop-info {
+  flex-grow: 1;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.stop-name {
+  font-weight: 700;
+  color: var(--navy-main);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.stop-landmark {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.stop-time-chip {
+  background: var(--navy-dark);
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  border-left: 3px solid var(--gold-main);
+}
+
+.dropping-point-chip {
+  border-left-color: var(--emerald-green);
+}
+
+.section-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--gold-hover);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}

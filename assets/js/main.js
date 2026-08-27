@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initMarqueeTicker();
   initFaqAccordion();
   initMobileNavbar();
+  initGalleryFilter();
+  initGalleryLightbox();
+  initRouteSchedule();
 });
 
 /* ==========================================================================
@@ -208,20 +211,24 @@ function trackParcel(event) {
           <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%"></div>
         </div>
 
-        <div class="timeline-points ms-2">
+        <div class="timeline-points ms-2 mb-3">
           <div class="timeline-point">
             <h6 class="fw-bold mb-0">Scanned at Bangalore Central Hub</h6>
-            <span class="small text-muted">Today, 6:30 PM • Dispatched on AC Freight Express</span>
+            <span class="small text-muted">Today, 6:30 PM • Dispatched on Overnight Speed Express</span>
           </div>
           <div class="timeline-point">
-            <h6 class="fw-bold mb-0">Picked up from Customer Location</h6>
-            <span class="small text-muted">Today, 4:15 PM • Verified by Driver</span>
+            <h6 class="fw-bold mb-0">Picked up from Customer / Shop Location</h6>
+            <span class="small text-muted">Today, 4:15 PM • Shop Pickup Available</span>
           </div>
           <div class="timeline-point">
             <h6 class="fw-bold mb-0">Shipment Created</h6>
-            <span class="small text-muted">Today, 2:00 PM • Sri Vinayaka Booking System</span>
+            <span class="small text-muted">Today, 2:00 PM • Sri Vinayaka Parcel System</span>
           </div>
         </div>
+
+        <a href="https://wa.me/919187487973?text=Hi,%20I%20want%20live%20WhatsApp%20status%20for%20Waybill:%20${encodeURIComponent(trackId)}" target="_blank" class="btn btn-success btn-sm w-100 fw-bold">
+          <i class="bi bi-whatsapp me-2"></i>Get Live Updates via WhatsApp (9187487973)
+        </a>
       </div>
     `;
   }
@@ -510,3 +517,138 @@ function initMobileNavbar() {
     }
   });
 }
+
+/* ==========================================================================
+   15. Fleet & Interior Gallery Filtering
+   ========================================================================== */
+function initGalleryFilter() {
+  const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-card-item');
+
+  if (!filterBtns.length || !galleryItems.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      galleryItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (filterValue === 'all' || itemCategory === filterValue) {
+          item.style.display = 'block';
+          item.classList.add('animate-fade-up');
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+}
+
+/* ==========================================================================
+   16. Gallery Lightbox Modal Viewer
+   ========================================================================== */
+function initGalleryLightbox() {
+  const galleryCards = document.querySelectorAll('.gallery-card');
+  const lightboxModal = document.getElementById('galleryLightboxModal');
+  const lightboxImg = document.getElementById('lightboxImage');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+
+  if (!galleryCards.length || !lightboxModal || !lightboxImg) return;
+
+  const modal = new bootstrap.Modal(lightboxModal);
+
+  galleryCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const img = card.querySelector('img');
+      const title = card.querySelector('.gallery-overlay-title')?.textContent || '';
+      const sub = card.querySelector('.gallery-overlay-sub')?.textContent || '';
+
+      if (img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || 'Sri Vinayaka Bus';
+        if (lightboxCaption) {
+          lightboxCaption.textContent = `${title} ${sub ? '— ' + sub : ''}`;
+        }
+        modal.show();
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   17. Route Timetable Switcher & Instant Stop Search
+   ========================================================================== */
+function initRouteSchedule() {
+  const tabBangaloreCoorg = document.getElementById('tabBangaloreCoorg');
+  const tabCoorgBangalore = document.getElementById('tabCoorgBangalore');
+  const panelBangaloreCoorg = document.getElementById('panelBangaloreCoorg');
+  const panelCoorgBangalore = document.getElementById('panelCoorgBangalore');
+  const searchInput = document.getElementById('stopSearchInput');
+
+  if (tabBangaloreCoorg && tabCoorgBangalore && panelBangaloreCoorg && panelCoorgBangalore) {
+    tabBangaloreCoorg.addEventListener('click', () => {
+      tabBangaloreCoorg.classList.add('active');
+      tabCoorgBangalore.classList.remove('active');
+      panelBangaloreCoorg.classList.remove('d-none');
+      panelCoorgBangalore.classList.add('d-none');
+      if (searchInput) {
+        searchInput.value = '';
+        filterStops('');
+      }
+    });
+
+    tabCoorgBangalore.addEventListener('click', () => {
+      tabCoorgBangalore.classList.add('active');
+      tabBangaloreCoorg.classList.remove('active');
+      panelCoorgBangalore.classList.remove('d-none');
+      panelBangaloreCoorg.classList.add('d-none');
+      if (searchInput) {
+        searchInput.value = '';
+        filterStops('');
+      }
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.trim().toLowerCase();
+      filterStops(query);
+    });
+  }
+
+  function filterStops(query) {
+    const activePanel = document.querySelector('.stops-panel:not(.d-none)');
+    if (!activePanel) return;
+
+    const stopItems = activePanel.querySelectorAll('.stop-card-item');
+    let matchCount = 0;
+
+    stopItems.forEach(item => {
+      const stopName = item.querySelector('.stop-name')?.textContent.toLowerCase() || '';
+      const stopLandmark = item.querySelector('.stop-landmark')?.textContent.toLowerCase() || '';
+      const stopTime = item.querySelector('.stop-time-chip')?.textContent.toLowerCase() || '';
+
+      if (query === '' || stopName.includes(query) || stopLandmark.includes(query) || stopTime.includes(query)) {
+        item.style.display = 'flex';
+        if (query !== '') {
+          item.classList.add('stop-highlight');
+        } else {
+          item.classList.remove('stop-highlight');
+        }
+        matchCount++;
+      } else {
+        item.style.display = 'none';
+        item.classList.remove('stop-highlight');
+      }
+    });
+
+    const noResultsMsg = activePanel.querySelector('.no-stops-found');
+    if (noResultsMsg) {
+      noResultsMsg.style.display = matchCount === 0 && query !== '' ? 'block' : 'none';
+    }
+  }
+}
+
