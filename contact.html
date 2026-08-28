@@ -16,66 +16,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Modular Components Engine -->
+  <script src="assets/js/components.js"></script>
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
-  <div class="top-bar">
-    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
-      <div class="d-flex align-items-center gap-4">
-        <span><i class="bi bi-telephone-fill text-warning me-2"></i><strong>Parcel & Booking Helpline:</strong> <a href="tel:9187487973" class="text-white text-decoration-none">+91 9187487973</a> / <a href="tel:9036270239" class="text-white text-decoration-none">+91 9036270239</a></span>
-        <span class="d-none d-md-inline"><i class="bi bi-envelope-fill text-warning me-2"></i>info@srivinayakagroup.com</span>
-      </div>
-      <div class="d-flex align-items-center gap-3">
-        <span class="trust-badge-pill"><i class="bi bi-shield-check text-success me-1"></i>Official Bitla Partner</span>
-        <a href="contact.html"><i class="bi bi-geo-alt-fill me-1"></i>Branch Locations</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Header & Navigation -->
-  <nav id="mainNavbar" class="navbar navbar-expand-lg sticky-top navbar-svg">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="assets/images/logo.jpeg" alt="Sri Vinayaka Logo" class="me-2">
-        <div class="brand-text">
-          <span class="brand-title">Sri Vinayaka Group</span>
-          <span class="brand-tagline">Driven by Trust</span>
-        </div>
-      </a>
-
-      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="bi bi-list fs-1 text-navy"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-menu navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="logistics.html">Logistics</a></li>
-          <li class="nav-item"><a class="nav-link" href="sleeper-services.html">Sleeper Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="tours.html">Tours & Travels</a></li>
-          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
-        </ul>
-        <div class="ms-lg-3 mt-3 mt-lg-0">
-          <a href="sleeper-services.html" class="btn btn-gold">
-            <i class="bi bi-ticket-perforated-fill"></i> Book Sleeper Bus
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <!-- Dynamic Modular Navbar -->
+  <site-navbar></site-navbar>
 
   <!-- Page Banner -->
   <section class="page-header-banner">
     <div class="container text-center">
       <h1 class="display-4 font-heading fw-bold text-white mb-2">Contact Sri Vinayaka Group</h1>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-center mb-0">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Contact</li>
-        </ol>
-      </nav>
     </div>
   </section>
 
@@ -93,54 +45,68 @@
       <div class="row gy-4">
         <!-- Contact Information Card -->
         <div class="col-lg-5 reveal-fade-left">
-          <div class="contact-info-card">
-            <h3 class="font-heading text-white fw-bold mb-4">Reach Us Directly</h3>
+          <div class="contact-info-card h-100">
+            <h3 class="font-heading text-white fw-bold mb-4">Official Contact Directory</h3>
 
+            <!-- Registered Head Office -->
+            <div class="contact-info-item">
+              <div class="contact-icon"><i class="bi bi-building"></i></div>
+              <div>
+                <h6 class="text-warning fw-bold mb-1">Registered Head Office (Virajpet)</h6>
+                <p class="small text-white-50 mb-1">Sri Vinayaka Bus, Arji Village, Kallubane, Virajpet, Coorg, Karnataka - 571218</p>
+                <p class="small text-white-50 mb-0">Direct Helplines: <a href="tel:9448325657" class="text-warning text-decoration-none">9448325657</a> / <a href="tel:9448264675" class="text-warning text-decoration-none">9448264675</a> / <a href="tel:9740716269" class="text-warning text-decoration-none">9740716269</a></p>
+              </div>
+            </div>
+
+            <!-- Bangalore Booking Desks -->
             <div class="contact-info-item">
               <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
               <div>
-                <h6 class="text-warning fw-bold mb-1">Bangalore Booking Offices</h6>
+                <h6 class="text-warning fw-bold mb-1">Bangalore Booking Desks</h6>
                 <p class="small text-white-50 mb-1">• <strong>Kalasipalya:</strong> <a href="tel:9187487973" class="text-warning text-decoration-none">9187487973</a></p>
                 <p class="small text-white-50 mb-1">• <strong>Majestic:</strong> <a href="tel:9036270239" class="text-warning text-decoration-none">9036270239</a></p>
                 <p class="small text-white-50 mb-0">• <strong>Gandhinagar:</strong> <a href="tel:9448260053" class="text-warning text-decoration-none">9448260053</a></p>
               </div>
             </div>
 
+            <!-- Online Booking & E-Payment Technical Support -->
             <div class="contact-info-item">
-              <div class="contact-icon"><i class="bi bi-building"></i></div>
+              <div class="contact-icon"><i class="bi bi-credit-card-2-front-fill"></i></div>
               <div>
-                <h6 class="text-warning fw-bold mb-1">Coorg Region Offices</h6>
-                <p class="small text-white-50 mb-1">Offices in: Gonikoppal, Virajpet, Murnad, Madikeri</p>
-                <p class="small text-white-50 mb-0">Enquiries: <a href="tel:9740716269" class="text-warning text-decoration-none">9740716269</a> / <a href="tel:9739739733" class="text-warning text-decoration-none">9739739733</a></p>
+                <h6 class="text-warning fw-bold mb-1">Online E-Payment & Ticket Support</h6>
+                <p class="small text-white-50 mb-1">Phone: <a href="tel:6366967218" class="text-warning text-decoration-none">6366967218</a></p>
+                <p class="small text-white-50 mb-0">Email: <a href="mailto:support@mybusbookings.com" class="text-warning text-decoration-none">support@mybusbookings.com</a></p>
               </div>
             </div>
 
-            <div class="contact-info-item">
-              <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
-              <div>
-                <h6 class="text-warning fw-bold mb-1">WhatsApp Parcel Tracking & Updates</h6>
-                <p class="small text-white-50 mb-0"><a href="https://wa.me/919187487973?text=Hello%20Sri%20Vinayaka%20Parcel%20Service" target="_blank" class="text-warning text-decoration-none">+91 9187487973</a> (Real-time updates sent via WhatsApp)</p>
-              </div>
-            </div>
-
+            <!-- Official Email Inquiries -->
             <div class="contact-info-item">
               <div class="contact-icon"><i class="bi bi-envelope-check-fill"></i></div>
               <div>
-                <h6 class="text-warning fw-bold mb-1">Email Inquiry</h6>
-                <p class="small text-white-50 mb-0">info@srivinayakagroup.com</p>
+                <h6 class="text-warning fw-bold mb-1">Official Email Inquiries</h6>
+                <p class="small text-white-50 mb-0"><a href="mailto:ruthwick20@gmail.com" class="text-warning text-decoration-none">ruthwick20@gmail.com</a></p>
               </div>
             </div>
 
-            <div class="mt-4 pt-3 border-top border-secondary d-flex gap-2">
-              <a href="tel:9187487973" class="btn btn-gold btn-sm"><i class="bi bi-telephone-fill me-1"></i> Call Booking Office</a>
-              <a href="https://wa.me/919187487973?text=Hi%20Sri%20Vinayaka%20Group" target="_blank" class="btn btn-navy btn-sm"><i class="bi bi-whatsapp me-1"></i> WhatsApp Chat</a>
+            <!-- WhatsApp Parcel Tracking -->
+            <div class="contact-info-item">
+              <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
+              <div>
+                <h6 class="text-warning fw-bold mb-1">WhatsApp Parcel Updates</h6>
+                <p class="small text-white-50 mb-0"><a href="https://wa.me/919187487973?text=Hello%20Sri%20Vinayaka%20Group" target="_blank" rel="noopener" class="text-warning text-decoration-none">+91 9187487973</a></p>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-top border-secondary d-flex gap-2 flex-wrap">
+              <a href="tel:9448325657" class="btn btn-gold btn-sm"><i class="bi bi-telephone-fill me-1"></i> Call Virajpet HQ</a>
+              <a href="https://wa.me/919187487973?text=Hello%20Sri%20Vinayaka%20Group" target="_blank" rel="noopener" class="btn btn-navy btn-sm"><i class="bi bi-whatsapp me-1"></i> WhatsApp Support</a>
             </div>
           </div>
         </div>
 
         <!-- Contact Form -->
         <div class="col-lg-7 reveal-fade-right">
-          <div class="custom-card p-4 p-lg-5">
+          <div class="custom-card p-4 p-lg-5 h-100">
             <h3 class="font-heading fw-bold mb-4 text-navy">Send Us a Message</h3>
             <form id="contactForm" class="needs-validation" novalidate>
               <div class="row g-3">
@@ -161,9 +127,11 @@
                 <div class="col-md-6">
                   <label class="form-label fw-semibold">Service Type</label>
                   <select class="form-select">
-                    <option selected>Sleeper Bus Booking</option>
+                    <option selected>Sleeper Bus Booking (21:30 / 21:50)</option>
                     <option>Logistics & Parcel Service</option>
                     <option>Tour Package Inquiry</option>
+                    <option>Bus Charter Hire</option>
+                    <option>Group / Corporate Travel</option>
                     <option>General Feedback</option>
                   </select>
                 </div>
@@ -188,63 +156,83 @@
         <div class="text-center mb-4">
           <span class="badge bg-gold text-dark font-heading fw-bold px-3 py-2 text-uppercase mb-2">Direct Contact Directory</span>
           <h3 class="h4 font-heading fw-bold text-navy">All Booking Offices & Logistics Desks</h3>
-          <p class="text-muted small">One Call | Multiple Destinations | On-Time Delivery</p>
+          <p class="text-muted small">One Call | Multiple Destinations | On-Time Delivery | Safe & Secure Handling</p>
         </div>
 
         <div class="row g-4">
+          <!-- Virajpet Head Office -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card custom-card p-4 h-100 border-0 shadow-sm border-start border-4 border-warning">
+              <div class="d-flex align-items-center mb-3">
+                <div class="card-icon-wrapper mb-0 me-3"><i class="bi bi-building"></i></div>
+                <div>
+                  <h5 class="fw-bold mb-0 text-navy">Virajpet HQ</h5>
+                  <span class="small text-muted">Coorg Head Office</span>
+                </div>
+              </div>
+              <p class="small text-muted mb-2">Arji Village, Kallubane, Virajpet</p>
+              <a href="tel:9448325657" class="btn btn-outline-navy btn-sm w-100 fw-bold"><i class="bi bi-telephone-fill me-1"></i>9448325657</a>
+            </div>
+          </div>
+
           <!-- Kalasipalya -->
-          <div class="col-md-4">
-            <div class="card custom-card p-4 h-100 border-0 shadow-sm">
+          <div class="col-md-6 col-lg-3">
+            <div class="card custom-card p-4 h-100 border-0 shadow-sm border-start border-4 border-warning">
               <div class="d-flex align-items-center mb-3">
                 <div class="card-icon-wrapper mb-0 me-3"><i class="bi bi-geo-alt-fill"></i></div>
                 <div>
-                  <h5 class="fw-bold mb-0 text-navy">Kalasipalya Office</h5>
-                  <span class="small text-muted">Bangalore</span>
+                  <h5 class="fw-bold mb-0 text-navy">Kalasipalya</h5>
+                  <span class="small text-muted">Bangalore Central</span>
                 </div>
               </div>
-              <p class="small text-muted mb-3">Parcel Booking & Overnight Freight Desk</p>
-              <a href="tel:9187487973" class="btn btn-outline-navy w-100 fw-bold"><i class="bi bi-telephone-fill me-2"></i>9187487973</a>
+              <p class="small text-muted mb-2">Parcel & Bus Booking Desk</p>
+              <a href="tel:9187487973" class="btn btn-outline-navy btn-sm w-100 fw-bold"><i class="bi bi-telephone-fill me-1"></i>9187487973</a>
             </div>
           </div>
 
           <!-- Majestic -->
-          <div class="col-md-4">
-            <div class="card custom-card p-4 h-100 border-0 shadow-sm">
-              <div class="card-icon-wrapper mb-0 me-3 d-inline-flex float-start"><i class="bi bi-geo-alt-fill"></i></div>
-              <div>
-                <h5 class="fw-bold mb-0 text-navy">Majestic Office</h5>
-                <span class="small text-muted">Bangalore</span>
+          <div class="col-md-6 col-lg-3">
+            <div class="card custom-card p-4 h-100 border-0 shadow-sm border-start border-4 border-warning">
+              <div class="d-flex align-items-center mb-3">
+                <div class="card-icon-wrapper mb-0 me-3"><i class="bi bi-geo-alt-fill"></i></div>
+                <div>
+                  <h5 class="fw-bold mb-0 text-navy">Majestic</h5>
+                  <span class="small text-muted">Bangalore Bus Stand</span>
+                </div>
               </div>
-              <p class="small text-muted mb-3 mt-2">Central Station Booking & Inquiry</p>
-              <a href="tel:9036270239" class="btn btn-outline-navy w-100 fw-bold"><i class="bi bi-telephone-fill me-2"></i>9036270239</a>
+              <p class="small text-muted mb-2">Central Booking Counter</p>
+              <a href="tel:9036270239" class="btn btn-outline-navy btn-sm w-100 fw-bold"><i class="bi bi-telephone-fill me-1"></i>9036270239</a>
             </div>
           </div>
 
           <!-- Gandhinagar -->
-          <div class="col-md-4">
-            <div class="card custom-card p-4 h-100 border-0 shadow-sm">
-              <div class="card-icon-wrapper mb-0 me-3 d-inline-flex float-start"><i class="bi bi-geo-alt-fill"></i></div>
-              <div>
-                <h5 class="fw-bold mb-0 text-navy">Gandhinagar Office</h5>
-                <span class="small text-muted">Bangalore</span>
+          <div class="col-md-6 col-lg-3">
+            <div class="card custom-card p-4 h-100 border-0 shadow-sm border-start border-4 border-warning">
+              <div class="d-flex align-items-center mb-3">
+                <div class="card-icon-wrapper mb-0 me-3"><i class="bi bi-geo-alt-fill"></i></div>
+                <div>
+                  <h5 class="fw-bold mb-0 text-navy">Gandhinagar</h5>
+                  <span class="small text-muted">Bangalore</span>
+                </div>
               </div>
-              <p class="small text-muted mb-3 mt-2">Parcel & Bus Booking Desk</p>
-              <a href="tel:9448260053" class="btn btn-outline-navy w-100 fw-bold"><i class="bi bi-telephone-fill me-2"></i>9448260053</a>
+              <p class="small text-muted mb-2">Commercial Logistics Desk</p>
+              <a href="tel:9448260053" class="btn btn-outline-navy btn-sm w-100 fw-bold"><i class="bi bi-telephone-fill me-1"></i>9448260053</a>
             </div>
           </div>
 
-          <!-- Coorg Hubs -->
+          <!-- Coorg Region Hubs -->
           <div class="col-md-12">
             <div class="card custom-card p-4 border-0 shadow-sm bg-light">
-              <div class="row align-items-center">
-                <div class="col-md-7">
-                  <h5 class="fw-bold text-navy mb-1"><i class="bi bi-building-fill text-warning me-2"></i>Coorg Region Offices & Delivery Coverage</h5>
-                  <p class="small text-muted mb-0">Offices in: <strong>Gonikoppal, Virajpet, Murnad, Madikeri</strong>. Serving every corner of Coorg!</p>
+              <div class="row align-items-center gy-3">
+                <div class="col-lg-7">
+                  <h5 class="fw-bold text-navy mb-1"><i class="bi bi-pin-map-fill text-warning me-2"></i>Coorg Regional Booking & Delivery Hubs</h5>
+                  <p class="small text-muted mb-0">Booking & Parcel collection offices in: <strong>Gonikoppal, Virajpet, Murnad, Madikeri</strong></p>
                 </div>
-                <div class="col-md-5 mt-3 mt-md-0 text-md-end">
-                  <div class="d-inline-flex gap-2">
+                <div class="col-lg-5 text-lg-end">
+                  <div class="d-inline-flex gap-2 flex-wrap">
                     <a href="tel:9740716269" class="btn btn-gold btn-sm"><i class="bi bi-telephone-fill me-1"></i>9740716269</a>
                     <a href="tel:9739739733" class="btn btn-gold btn-sm"><i class="bi bi-telephone-fill me-1"></i>9739739733</a>
+                    <a href="tel:9448264675" class="btn btn-gold btn-sm"><i class="bi bi-telephone-fill me-1"></i>9448264675</a>
                   </div>
                 </div>
               </div>
@@ -270,66 +258,8 @@
   <!-- Toast Container -->
   <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"></div>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row g-4 mb-5">
-        <div class="col-lg-4">
-          <div class="d-flex align-items-center mb-3">
-            <img src="assets/images/logo.jpeg" alt="Sri Vinayaka Group" style="height: 44px;" class="me-2 rounded">
-            <span class="h4 font-heading text-white mb-0 fw-bold">Sri Vinayaka Group</span>
-          </div>
-          <p class="small text-white-50">
-            South India's preferred mobility and logistics provider. Connecting Bangalore, Coorg, and major regional hubs with trust, speed, and safety.
-          </p>
-          <div class="mt-3">
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://x.com" target="_blank" rel="noopener" class="social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="https://wa.me/919187487973" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          </div>
-        </div>
-
-        <div class="col-6 col-lg-2">
-          <h5 class="footer-title font-heading">Quick Links</h5>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="logistics.html">Logistics</a></li>
-            <li><a href="sleeper-services.html">Sleeper Bus</a></li>
-            <li><a href="tours.html">Tours & Travels</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div class="col-6 col-lg-3">
-          <h5 class="footer-title font-heading">Our Services</h5>
-          <ul class="footer-links">
-            <li><a href="sleeper-services.html">Bangalore ↔ Coorg Sleeper</a></li>
-            <li><a href="logistics.html">Express Overnight Parcel</a></li>
-            <li><a href="tours.html">Coorg Weekend Packages</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3">
-          <h5 class="footer-title font-heading">Bitla Online Booking</h5>
-          <p class="small text-white-50">Book your sleeper seats anytime via Bitla online booking platform.</p>
-          <button onclick="redirectToBitla()" class="btn btn-gold btn-sm w-100 justify-content-center mt-2">
-            <i class="bi bi-box-arrow-up-right me-1"></i>Go to Bitla Booking
-          </button>
-        </div>
-      </div>
-
-      <div class="border-top border-secondary pt-4 text-center small text-white-50">
-        <p class="mb-0">&copy; 2026 Sri Vinayaka Group. All Rights Reserved. Driven by Trust.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/919187487973?text=Hello%20Sri%20Vinayaka%20Group,%20I%20have%20an%20enquiry" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-  </a>
+  <!-- Dynamic Modular Footer -->
+  <site-footer></site-footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>

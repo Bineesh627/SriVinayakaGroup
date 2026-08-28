@@ -16,66 +16,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Modular Components Engine -->
+  <script src="assets/js/components.js"></script>
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
-  <div class="top-bar">
-    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
-      <div class="d-flex align-items-center gap-4">
-        <span><i class="bi bi-telephone-fill text-warning me-2"></i><strong>Helpline:</strong> <a href="tel:9187487973" class="text-white text-decoration-none">+91 9187487973</a> / <a href="tel:9036270239" class="text-white text-decoration-none">+91 9036270239</a></span>
-        <span class="d-none d-md-inline"><i class="bi bi-envelope-fill text-warning me-2"></i>info@srivinayakagroup.com</span>
-      </div>
-      <div class="d-flex align-items-center gap-3">
-        <span class="badge bg-warning text-dark font-heading fw-bold"><i class="bi bi-shield-check me-1"></i>Official Bitla Partner</span>
-        <a href="contact.html"><i class="bi bi-geo-alt-fill me-1"></i>Branch Locations</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Header & Navigation -->
-  <nav id="mainNavbar" class="navbar navbar-expand-lg sticky-top navbar-svg">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="assets/images/logo.jpeg" alt="Sri Vinayaka Logo" class="me-2">
-        <div class="brand-text">
-          <span class="brand-title">Sri Vinayaka Group</span>
-          <span class="brand-tagline">Driven by Trust</span>
-        </div>
-      </a>
-
-      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="bi bi-list fs-1 text-navy"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-menu navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="logistics.html">Logistics</a></li>
-          <li class="nav-item"><a class="nav-link" href="sleeper-services.html">Sleeper Services</a></li>
-          <li class="nav-item"><a class="nav-link active" href="tours.html">Tours & Travels</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
-        <div class="ms-lg-3 mt-3 mt-lg-0">
-          <a href="sleeper-services.html" class="btn btn-gold">
-            <i class="bi bi-ticket-perforated-fill"></i> Book Sleeper Bus
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <!-- Dynamic Modular Navbar -->
+  <site-navbar></site-navbar>
 
   <!-- Page Banner -->
   <section class="page-header-banner">
     <div class="container text-center">
       <h1 class="display-4 font-heading fw-bold text-white mb-2">Tours & Travel Packages</h1>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-center mb-0">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Tours & Travels</li>
-        </ol>
-      </nav>
     </div>
   </section>
 
@@ -86,70 +38,79 @@
         <span class="section-subtitle">Explore South India</span>
         <h2 class="section-title">Handcrafted Tour Packages & Charters</h2>
         <p class="section-desc">
-          Handcrafted holiday packages, family vacations, corporate retreats, and custom travel arrangements.
+          Customizable holiday packages, family vacations, corporate retreats, and luxury coach charter arrangements. Send your enquiry for tailor-made itineraries.
         </p>
       </div>
 
       <div class="row g-4 mb-5">
         <!-- Tour Package 1 -->
         <div class="col-md-4 reveal-on-scroll" data-delay="0">
-          <div class="custom-card">
-            <div class="position-relative">
-              <img src="assets/images/coorg_tour.png" class="tour-card-img" alt="Coorg Nature Package">
-              <span class="tour-tag">3 Days / 2 Nights</span>
-            </div>
-            <div class="p-4">
-              <h4 class="h5 fw-bold mb-2">Coorg Plantation & Mist Escape</h4>
-              <p class="text-muted small mb-3">Abbey Falls, Raja's Seat, Dubare Elephant Camp, Golden Temple Kushalnagar, and coffee estate stay.</p>
-              <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-                <div>
-                  <span class="small text-muted">Starting from</span>
-                  <div class="fw-bold text-navy h5 mb-0">₹4,999 / person</div>
-                </div>
-                <button onclick="openEnquiryModal('Tour Package', 'Coorg Nature & Mist Escape')" class="btn btn-outline-gold">Enquire</button>
+          <div class="custom-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="position-relative">
+                <img src="assets/images/coorg_tour.png" class="tour-card-img" alt="Coorg Nature Package">
+                <span class="tour-tag">3 Days / 2 Nights</span>
               </div>
+              <div class="p-4 pb-2">
+                <h4 class="h5 fw-bold mb-2">Coorg Plantation & Mist Escape</h4>
+                <p class="text-muted small mb-3">Abbey Falls, Raja's Seat, Dubare Elephant Camp, Golden Temple Kushalnagar, and scenic coffee estate homestays.</p>
+                <div class="mb-3">
+                  <span class="badge bg-warning-subtle text-dark border border-warning">Custom Family Itinerary</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <button onclick="openEnquiryModal('Tour Package', 'Coorg Plantation & Mist Escape')" class="btn btn-gold w-100 justify-content-center">
+                <i class="bi bi-chat-text-fill me-1"></i>Enquire for Itinerary & Quote
+              </button>
             </div>
           </div>
         </div>
 
         <!-- Tour Package 2 -->
         <div class="col-md-4 reveal-on-scroll" data-delay="150">
-          <div class="custom-card">
-            <div class="position-relative">
-              <img src="assets/images/bus/1N2A9318.JPG" class="tour-card-img" alt="Mysore Heritage Tour Luxury Bus">
-              <span class="tour-tag">2 Days / 1 Night</span>
-            </div>
-            <div class="p-4">
-              <h4 class="h5 fw-bold mb-2">Mysore Royal Heritage Tour</h4>
-              <p class="text-muted small mb-3">Mysore Palace, Chamundi Hills, Brindavan Gardens light show, and St. Philomena's Church.</p>
-              <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-                <div>
-                  <span class="small text-muted">Starting from</span>
-                  <div class="fw-bold text-navy h5 mb-0">₹3,499 / person</div>
-                </div>
-                <button onclick="openEnquiryModal('Tour Package', 'Mysore Royal Heritage Tour')" class="btn btn-outline-gold">Enquire</button>
+          <div class="custom-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="position-relative">
+                <img src="assets/images/bus/1N2A9318.JPG" class="tour-card-img" alt="Mysore Heritage Tour Luxury Bus">
+                <span class="tour-tag">2 Days / 1 Night</span>
               </div>
+              <div class="p-4 pb-2">
+                <h4 class="h5 fw-bold mb-2">Mysore Royal Heritage Tour</h4>
+                <p class="text-muted small mb-3">Mysore Palace, Chamundi Hills, Brindavan Gardens musical fountain show, and St. Philomena's Cathedral.</p>
+                <div class="mb-3">
+                  <span class="badge bg-primary-subtle text-primary border border-primary">Royal Sightseeing & Stays</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <button onclick="openEnquiryModal('Tour Package', 'Mysore Royal Heritage Tour')" class="btn btn-gold w-100 justify-content-center">
+                <i class="bi bi-chat-text-fill me-1"></i>Enquire for Itinerary & Quote
+              </button>
             </div>
           </div>
         </div>
 
         <!-- Tour Package 3 -->
         <div class="col-md-4 reveal-on-scroll" data-delay="300">
-          <div class="custom-card">
-            <div class="position-relative">
-              <img src="assets/images/bus/1N2A9322.JPG" class="tour-card-img" alt="Group & Corporate Travels Charter Coach">
-              <span class="tour-tag">Customized</span>
-            </div>
-            <div class="p-4">
-              <h4 class="h5 fw-bold mb-2">Corporate & Group Charter Hire</h4>
-              <p class="text-muted small mb-3">Dedicated luxury AC buses for corporate offsites, wedding parties, college tours, and family groups.</p>
-              <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-                <div>
-                  <span class="small text-muted">Custom Quotes</span>
-                  <div class="fw-bold text-navy h5 mb-0">Best Group Rates</div>
-                </div>
-                <button onclick="openEnquiryModal('Group Travel', 'Custom Corporate & Family Group Charter')" class="btn btn-outline-gold">Enquire</button>
+          <div class="custom-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="position-relative">
+                <img src="assets/images/bus/1N2A9322.JPG" class="tour-card-img" alt="Group & Corporate Travels Charter Coach">
+                <span class="tour-tag">Custom Group Hire</span>
               </div>
+              <div class="p-4 pb-2">
+                <h4 class="h5 fw-bold mb-2">Corporate & Group Charter Hire</h4>
+                <p class="text-muted small mb-3">Dedicated luxury AC coaches for corporate offsites, wedding parties, college excursions, and pilgrimage groups.</p>
+                <div class="mb-3">
+                  <span class="badge bg-info-subtle text-info border border-info">Luxury BharatBenz Fleet</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <button onclick="openEnquiryModal('Group Travel', 'Corporate & Group Charter Hire')" class="btn btn-gold w-100 justify-content-center">
+                <i class="bi bi-chat-text-fill me-1"></i>Enquire for Charter Rates
+              </button>
             </div>
           </div>
         </div>
@@ -193,66 +154,67 @@
   <!-- Toast Container -->
   <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"></div>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row g-4 mb-5">
-        <div class="col-lg-4">
-          <div class="d-flex align-items-center mb-3">
-            <img src="assets/images/logo.jpeg" alt="Sri Vinayaka Group" style="height: 44px;" class="me-2 rounded">
-            <span class="h4 font-heading text-white mb-0 fw-bold">Sri Vinayaka Group</span>
+  <!-- Dynamic Modular Footer -->
+  <site-footer></site-footer>
+
+  <!-- Tour Booking & Custom Quote Modal -->
+  <div class="modal fade" id="tourBookingModal" tabindex="-1" aria-labelledby="tourBookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-navy text-white border-0">
+          <div>
+            <h5 class="modal-title font-heading fw-bold" id="tourBookingModalLabel">
+              <i class="bi bi-compass-fill text-warning me-2"></i>Enquire Tour / Charter
+            </h5>
+            <small class="text-white-50">Customized itinerary & instant quote for family, group, or corporate travel</small>
           </div>
-          <p class="small text-white-50">
-            South India's preferred mobility and logistics provider. Connecting Bangalore, Coorg, and major regional hubs with trust, speed, and safety.
-          </p>
-          <div class="mt-3">
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://x.com" target="_blank" rel="noopener" class="social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="https://wa.me/919187487973" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
-        <div class="col-6 col-lg-2">
-          <h5 class="footer-title font-heading">Quick Links</h5>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="logistics.html">Logistics</a></li>
-            <li><a href="sleeper-services.html">Sleeper Bus</a></li>
-            <li><a href="tours.html">Tours & Travels</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
+        <div class="modal-body p-4">
+          <form id="tourInquiryForm" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-12">
+                <label class="form-label fw-semibold">Selected Package / Requirement</label>
+                <input type="text" class="form-control bg-light fw-bold text-navy" id="selectedPackageName" readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Your Full Name *</label>
+                <input type="text" class="form-control" id="tourName" placeholder="Enter your name" required>
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Mobile Number *</label>
+                <input type="tel" class="form-control" id="tourPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                <div class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Expected Travel Date *</label>
+                <input type="date" class="form-control" id="tourDate" required>
+                <div class="invalid-feedback">Please select travel date.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Number of Travelers *</label>
+                <input type="number" class="form-control" id="tourPax" min="1" max="100" placeholder="e.g. 4" required>
+                <div class="invalid-feedback">Please enter number of persons.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Special Notes / Pickup Location</label>
+                <textarea class="form-control" id="tourNotes" rows="3" placeholder="Tell us if you need hotel stay, food preferences, or custom pickup points..."></textarea>
+              </div>
+              <div class="col-12 mt-4 d-flex gap-2 flex-wrap">
+                <button type="submit" class="btn btn-gold flex-grow-1 py-2 justify-content-center">
+                  <i class="bi bi-send-fill me-1"></i> Submit Enquiry
+                </button>
+                <button type="button" onclick="sendTourWhatsApp()" class="btn btn-navy flex-grow-1 py-2 justify-content-center">
+                  <i class="bi bi-whatsapp me-1"></i> Enquire on WhatsApp
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-
-        <div class="col-6 col-lg-3">
-          <h5 class="footer-title font-heading">Our Services</h5>
-          <ul class="footer-links">
-            <li><a href="sleeper-services.html">Bangalore ↔ Coorg Sleeper</a></li>
-            <li><a href="logistics.html">Express Overnight Parcel</a></li>
-            <li><a href="tours.html">Coorg Weekend Packages</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3">
-          <h5 class="footer-title font-heading">Bitla Online Booking</h5>
-          <p class="small text-white-50">Book your sleeper seats anytime via Bitla online booking platform.</p>
-          <button onclick="redirectToBitla()" class="btn btn-gold btn-sm w-100 justify-content-center mt-2">
-            <i class="bi bi-box-arrow-up-right me-1"></i>Go to Bitla Booking
-          </button>
-        </div>
-      </div>
-
-      <div class="border-top border-secondary pt-4 text-center small text-white-50">
-        <p class="mb-0">&copy; 2026 Sri Vinayaka Group. All Rights Reserved. Driven by Trust.</p>
       </div>
     </div>
-  </footer>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/919187487973?text=Hello%20Sri%20Vinayaka%20Group,%20I%20have%20an%20enquiry" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-  </a>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>

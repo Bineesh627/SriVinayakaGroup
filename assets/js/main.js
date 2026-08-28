@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const safeInit = (fn) => {
     try { fn(); } catch (err) { console.warn('Init error in ' + fn.name, err); }
   };
+  
   safeInit(initActiveNavHighlight);
   safeInit(initNavbarScroll);
   safeInit(initParcelEstimator);

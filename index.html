@@ -23,6 +23,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Modular Components Engine -->
+  <script src="assets/js/components.js"></script>
 </head>
 <body>
 
@@ -35,52 +37,8 @@
     </div>
   </div>
 
-  <!-- Top Announcement Bar -->
-  <div class="top-bar">
-    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
-      <div class="d-flex align-items-center gap-4">
-        <span><i class="bi bi-telephone-fill text-warning me-2"></i><strong>Parcel & Booking Helpline:</strong> <a href="tel:9187487973" class="text-white text-decoration-none">+91 9187487973</a> / <a href="tel:9036270239" class="text-white text-decoration-none">+91 9036270239</a></span>
-        <span class="d-none d-md-inline"><i class="bi bi-envelope-fill text-warning me-2"></i>info@srivinayakagroup.com</span>
-      </div>
-      <div class="d-flex align-items-center gap-3">
-        <span class="trust-badge-pill"><i class="bi bi-shield-check text-success me-1"></i>Official Bitla Partner</span>
-        <a href="contact.html"><i class="bi bi-geo-alt-fill me-1"></i>Branch Locations</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Multi-Page Header & Navigation -->
-  <nav id="mainNavbar" class="navbar navbar-expand-lg sticky-top navbar-svg">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="assets/images/logo.jpeg" alt="Sri Vinayaka Logo" class="me-2">
-        <div class="brand-text">
-          <span class="brand-title">Sri Vinayaka Group</span>
-          <span class="brand-tagline">Driven by Trust</span>
-        </div>
-      </a>
-
-      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="bi bi-list fs-1 text-navy"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-menu navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="logistics.html">Logistics</a></li>
-          <li class="nav-item"><a class="nav-link" href="sleeper-services.html">Sleeper Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="tours.html">Tours & Travels</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
-        <div class="ms-lg-3 mt-3 mt-lg-0">
-          <a href="sleeper-services.html" class="btn btn-gold">
-            <i class="bi bi-ticket-perforated-fill"></i> Book Sleeper Bus
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <!-- Dynamic Modular Navbar -->
+  <site-navbar></site-navbar>
 
   <!-- Hero Section -->
   <section class="hero-section">
@@ -223,45 +181,86 @@
     </div>
   </section>
 
-  <!-- Overview of Services -->
+  <!-- Overview of Services (Group Multi-Vertical Structure) -->
   <section class="section-padding bg-white">
     <div class="container">
       <div class="text-center mb-5 reveal-on-scroll">
-        <span class="section-subtitle">Our Services</span>
-        <h2 class="section-title">What Sri Vinayaka Group Offers</h2>
-        <p class="section-desc">Building long-term customer trust with multi-faceted mobility, freight logistics, and tour packages.</p>
+        <span class="section-subtitle">Our Group Verticals</span>
+        <h2 class="section-title">Diverse Solutions Under Sri Vinayaka Group</h2>
+        <p class="section-desc">Serving South India with trusted passenger mobility, express cargo freight, holiday packages, and coach charters.</p>
       </div>
 
       <div class="row g-4">
         <!-- Service 1: Sleeper Buses -->
-        <div class="col-md-4 reveal-on-scroll" data-delay="0">
-          <div class="custom-card p-4 text-center">
-            <div class="card-icon-wrapper mx-auto"><i class="bi bi-bus-front-fill"></i></div>
-            <h4 class="h5 fw-bold mb-3">Bangalore ↔ Coorg AC Sleeper</h4>
-            <p class="text-muted small mb-3">4 dedicated multi-axle AC sleeper buses running strictly fixed daily departures (<strong>21:30 & 21:50</strong>) with 24 Bangalore pickup stops.</p>
-            <div class="mb-3"><span class="badge bg-warning-subtle text-dark border border-warning">Fixed 21:30 & 21:50 Timings</span></div>
-            <a href="sleeper-services.html" class="btn btn-outline-gold">Explore Sleeper Bus & Schedule</a>
+        <div class="col-md-6 col-lg-3 reveal-on-scroll" data-delay="0">
+          <div class="custom-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-wrapper mx-auto"><i class="bi bi-bus-front-fill"></i></div>
+              <h4 class="h5 fw-bold mb-2">Luxury Sleeper Mobility</h4>
+              <p class="text-muted small mb-3">4 dedicated BharatBenz & multi-axle AC sleeper buses running fixed daily departures (<strong>21:30 & 21:50</strong>) between Bangalore & Coorg.</p>
+              <div class="mb-3"><span class="badge bg-warning-subtle text-dark border border-warning">Fixed 21:30 & 21:50 Timings</span></div>
+            </div>
+            <a href="sleeper-services.html" class="btn btn-outline-gold btn-sm w-100 mt-2">Sleeper Schedule & Booking</a>
           </div>
         </div>
 
-        <!-- Service 2: Logistics -->
-        <div class="col-md-4 reveal-on-scroll" data-delay="150">
-          <div class="custom-card p-4 text-center">
-            <div class="card-icon-wrapper mx-auto"><i class="bi bi-box-seam-fill"></i></div>
-            <h4 class="h5 fw-bold mb-3">Daily Express Parcel Service</h4>
-            <p class="text-muted small mb-3">Overnight speed parcel service connecting Bangalore to Coorg, Mysore, Mangalore, Chennai, Hyderabad & South India. WhatsApp updates: <strong>9187487973</strong>.</p>
-            <div class="mb-3"><span class="badge bg-success-subtle text-success border border-success me-1">Free Doorstep Pickup</span><span class="badge bg-warning-subtle text-dark border border-warning">Shop Pickup Available</span></div>
-            <a href="logistics.html" class="btn btn-outline-gold">View Offices & Rate Estimator</a>
+        <!-- Service 2: Logistics & Cargo -->
+        <div class="col-md-6 col-lg-3 reveal-on-scroll" data-delay="100">
+          <div class="custom-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-wrapper mx-auto"><i class="bi bi-box-seam-fill"></i></div>
+              <h4 class="h5 fw-bold mb-2">Express Cargo Logistics</h4>
+              <p class="text-muted small mb-3">Overnight speed parcel delivery connecting Bangalore to Coorg, Mysore, Mangalore & South India. Doorstep pickup available.</p>
+              <div class="mb-3"><span class="badge bg-success-subtle text-success border border-success">Book Today, Delivered Tomorrow</span></div>
+            </div>
+            <a href="logistics.html" class="btn btn-outline-gold btn-sm w-100 mt-2">Parcel Rates & Booking Offices</a>
           </div>
         </div>
 
-        <!-- Service 3: Tours & Travels -->
-        <div class="col-md-4 reveal-on-scroll" data-delay="300">
-          <div class="custom-card p-4 text-center">
-            <div class="card-icon-wrapper mx-auto"><i class="bi bi-map-fill"></i></div>
-            <h4 class="h5 fw-bold mb-3">Tours & Group Travel</h4>
-            <p class="text-muted small mb-4">Custom corporate retreats, family holiday packages in Coorg & Mysore, and luxury bus charters.</p>
-            <a href="tours.html" class="btn btn-outline-gold">View Tour Packages</a>
+        <!-- Service 3: Tours & Holidays -->
+        <div class="col-md-6 col-lg-3 reveal-on-scroll" data-delay="200">
+          <div class="custom-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-wrapper mx-auto"><i class="bi bi-map-fill"></i></div>
+              <h4 class="h5 fw-bold mb-2">Tours & Holiday Packages</h4>
+              <p class="text-muted small mb-3">Curated holiday getaways, Coorg coffee plantation stays, Abbey Falls tours, and Mysore royal heritage weekend packages.</p>
+              <div class="mb-3"><span class="badge bg-primary-subtle text-primary border border-primary">Custom Family Packages</span></div>
+            </div>
+            <a href="tours.html" class="btn btn-outline-gold btn-sm w-100 mt-2">Explore Tour Itineraries</a>
+          </div>
+        </div>
+
+        <!-- Service 4: Bus Charter Hire -->
+        <div class="col-md-6 col-lg-3 reveal-on-scroll" data-delay="300">
+          <div class="custom-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-wrapper mx-auto"><i class="bi bi-people-fill"></i></div>
+              <h4 class="h5 fw-bold mb-2">Corporate & Group Charter</h4>
+              <p class="text-muted small mb-3">Dedicated luxury AC coach rentals for corporate offsites, wedding parties, college excursions, and pilgrimage groups.</p>
+              <div class="mb-3"><span class="badge bg-info-subtle text-info border border-info">Experienced Dual Drivers</span></div>
+            </div>
+            <a href="tours.html#charter" class="btn btn-outline-gold btn-sm w-100 mt-2">Charter Hire Enquiry</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Bus Tracking & Technology Feature Highlight -->
+      <div class="card border-0 bg-navy text-white rounded-4 p-4 p-lg-4 mt-5 shadow-sm reveal-on-scroll">
+        <div class="row align-items-center gy-3">
+          <div class="col-md-8">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge bg-warning text-dark font-heading fw-bold px-3 py-1">Tech-Enabled Travel</span>
+              <span class="text-warning small"><i class="bi bi-geo-alt-fill me-1"></i>Live GPS Integration</span>
+            </div>
+            <h4 class="font-heading fw-bold text-white mb-2">Live GPS Bus Tracking & Instant Online Reservations</h4>
+            <p class="text-white-50 small mb-0">
+              Track your coach live on your smartphone to plan your boarding effortlessly. Reserve your preferred sleeper berths instantly with real-time seat availability on our official Bitla platform.
+            </p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <a href="sleeper-services.html" class="btn btn-gold">
+              <i class="bi bi-ticket-perforated-fill me-1"></i>View Sleeper Schedule & Book
+            </a>
           </div>
         </div>
       </div>
@@ -535,66 +534,8 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row g-4 mb-5">
-        <div class="col-lg-4">
-          <div class="d-flex align-items-center mb-3">
-            <img src="assets/images/logo.jpeg" alt="Sri Vinayaka Group" style="height: 44px;" class="me-2 rounded">
-            <span class="h4 font-heading text-white mb-0 fw-bold">Sri Vinayaka Group</span>
-          </div>
-          <p class="small text-white-50">
-            South India's preferred mobility and logistics provider. Connecting Bangalore, Coorg, and major regional hubs with trust, speed, and safety.
-          </p>
-          <div class="mt-3">
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://x.com" target="_blank" rel="noopener" class="social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="https://wa.me/919187487973" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          </div>
-        </div>
-
-        <div class="col-6 col-lg-2">
-          <h5 class="footer-title font-heading">Quick Links</h5>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="logistics.html">Logistics</a></li>
-            <li><a href="sleeper-services.html">Sleeper Bus</a></li>
-            <li><a href="tours.html">Tours & Travels</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div class="col-6 col-lg-3">
-          <h5 class="footer-title font-heading">Our Services</h5>
-          <ul class="footer-links">
-            <li><a href="sleeper-services.html">Bangalore ↔ Coorg Sleeper</a></li>
-            <li><a href="logistics.html">Express Overnight Parcel</a></li>
-            <li><a href="tours.html">Coorg Weekend Packages</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3">
-          <h5 class="footer-title font-heading">Bitla Online Booking</h5>
-          <p class="small text-white-50">Book your sleeper seats anytime via Bitla online booking platform.</p>
-          <button onclick="redirectToBitla()" class="btn btn-gold btn-sm w-100 justify-content-center mt-2">
-            <i class="bi bi-box-arrow-up-right me-1"></i>Go to Bitla Booking
-          </button>
-        </div>
-      </div>
-
-      <div class="border-top border-secondary pt-4 text-center small text-white-50">
-        <p class="mb-0">&copy; 2026 Sri Vinayaka Group. All Rights Reserved. Driven by Trust.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/919187487973?text=Hello%20Sri%20Vinayaka%20Group,%20I%20have%20an%20enquiry" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-  </a>
+  <!-- Dynamic Modular Footer -->
+  <site-footer></site-footer>
 
   <!-- Toast Feedback Container -->
   <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"></div>
