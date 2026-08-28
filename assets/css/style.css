@@ -43,6 +43,13 @@ html, body {
   max-width: 100%;
   overflow-x: hidden !important;
   position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+site-navbar, site-footer {
+  display: block;
+  width: 100%;
 }
 
 html {
@@ -53,7 +60,7 @@ html {
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text-dark);
-  background-color: var(--bg-light);
+  background-color: var(--navy-dark);
   line-height: 1.6;
 }
 
