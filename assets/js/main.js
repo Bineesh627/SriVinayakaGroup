@@ -436,13 +436,19 @@ function initCounterAnimation() {
    12. Continuous Marquee Ticker Loop
    ========================================================================== */
 function initMarqueeTicker() {
-  const tickerContent = document.querySelector('.ticker-content');
-  if (!tickerContent) return;
+  const tickerBars = document.querySelectorAll('.promo-ticker-bar');
+  if (!tickerBars.length) return;
 
-  if (!tickerContent.dataset.duplicated) {
-    tickerContent.innerHTML += tickerContent.innerHTML;
-    tickerContent.dataset.duplicated = 'true';
-  }
+  tickerBars.forEach(bar => {
+    const tickerContent = bar.querySelector('.ticker-content');
+    if (!tickerContent) return;
+
+    if (!tickerContent.dataset.duplicated) {
+      const original = tickerContent.innerHTML;
+      tickerContent.innerHTML = original + original;
+      tickerContent.dataset.duplicated = 'true';
+    }
+  });
 }
 
 /* ==========================================================================
@@ -526,26 +532,31 @@ function initMobileNavbar() {
    15. Fleet & Interior Gallery Filtering
    ========================================================================== */
 function initGalleryFilter() {
-  const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-card-item');
+  const filterBars = document.querySelectorAll('.gallery-filter-bar');
+  if (!filterBars.length) return;
 
-  if (!filterBtns.length || !galleryItems.length) return;
+  filterBars.forEach(bar => {
+    const filterBtns = bar.querySelectorAll('.gallery-filter-btn');
+    const container = bar.closest('section') || bar.parentElement;
+    const galleryItems = container.querySelectorAll('.gallery-card-item');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-      const filterValue = btn.getAttribute('data-filter');
+        const filterValue = btn.getAttribute('data-filter');
 
-      galleryItems.forEach(item => {
-        const itemCategory = item.getAttribute('data-category');
-        if (filterValue === 'all' || itemCategory === filterValue) {
-          item.style.display = 'block';
-          item.classList.add('animate-fade-up');
-        } else {
-          item.style.display = 'none';
-        }
+        galleryItems.forEach(item => {
+          const itemCategory = item.getAttribute('data-category') || '';
+          const categories = itemCategory.split(/\s+/);
+          if (filterValue === 'all' || categories.includes(filterValue) || itemCategory.includes(filterValue)) {
+            item.style.display = 'block';
+            item.classList.add('animate-fade-up');
+          } else {
+            item.style.display = 'none';
+          }
+        });
       });
     });
   });
