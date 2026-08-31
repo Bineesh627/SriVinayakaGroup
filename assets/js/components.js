@@ -68,15 +68,14 @@
                 South India's preferred mobility, logistics, and holiday tour provider. Connecting Bangalore, Coorg, Mysore, and major regional hubs with safety, speed, and trust.
               </p>
               <div class="small text-white-50 mb-2">
-                <i class="bi bi-geo-alt-fill text-warning me-1"></i><strong>Head Office:</strong> Arji Village, Kallubane, Virajpet, Coorg, Karnataka - 571218
+                <i class="bi bi-geo-alt-fill text-warning me-1"></i><strong>Head Office:</strong> <a href="https://maps.app.goo.gl/wQY96wuksRgB2jsd8?g_st=ic" target="_blank" rel="noopener" class="text-white-50 text-decoration-none">Arji Village, Kallubane, Virajpet, Coorg, Karnataka - 571218 <i class="bi bi-box-arrow-up-right small text-warning ms-1"></i></a>
               </div>
               <div class="small text-white-50 mb-3">
                 <i class="bi bi-envelope-fill text-warning me-1"></i><a href="mailto:ruthwick20@gmail.com" class="text-white-50 text-decoration-none">ruthwick20@gmail.com</a>
               </div>
               <div>
                 <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="https://x.com" target="_blank" rel="noopener" class="social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://www.instagram.com/sri_vinayaka_official_" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                 <a href="https://wa.me/919187487973" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
               </div>
             </div>
