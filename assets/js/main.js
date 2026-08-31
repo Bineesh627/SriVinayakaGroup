@@ -21,8 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
   safeInit(initMobileNavbar);
   safeInit(initGalleryFilter);
   safeInit(initGalleryLightbox);
+  safeInit(initProgressiveGalleryLoader);
   safeInit(initRouteSchedule);
   safeInit(initLazyVideos);
+  safeInit(initInstagramEmbeds);
+  safeInit(initServiceWorker);
 });
 
 /* ==========================================================================
@@ -530,7 +533,60 @@ function initMobileNavbar() {
 }
 
 /* ==========================================================================
-   15. Fleet & Interior Gallery Filtering
+   14. Progressive Sequential 1-by-1 Image Loader (Fast & Resilient)
+   ========================================================================== */
+function initProgressiveGalleryLoader() {
+  const galleryImgs = Array.from(document.querySelectorAll('.gallery-card img'));
+  if (!galleryImgs.length) return;
+
+  const markLoaded = (img) => {
+    const card = img.closest('.gallery-card');
+    if (card) card.classList.add('is-loaded');
+    img.classList.add('is-loaded');
+  };
+
+  const loadImage = (img) => {
+    return new Promise((resolve) => {
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded(img);
+        resolve();
+        return;
+      }
+
+      img.addEventListener('load', () => {
+        markLoaded(img);
+        resolve();
+      }, { once: true });
+
+      img.addEventListener('error', () => {
+        markLoaded(img);
+        resolve();
+      }, { once: true });
+
+      if (!img.src && img.dataset.src) {
+        img.src = img.dataset.src;
+      }
+    });
+  };
+
+  // Immediate load for first 6 images to populate viewport instantly
+  galleryImgs.slice(0, 6).forEach(img => loadImage(img));
+
+  // Sequential 1-by-1 queue with smooth 35ms stagger for remaining images
+  let queueIndex = 0;
+  function processQueue() {
+    if (queueIndex >= galleryImgs.length) return;
+    const img = galleryImgs[queueIndex++];
+    loadImage(img).then(() => {
+      setTimeout(processQueue, 35);
+    });
+  }
+
+  setTimeout(processQueue, 100);
+}
+
+/* ==========================================================================
+   15. Fleet & Interior Gallery Filtering with Staggered Cascade
    ========================================================================== */
 function initGalleryFilter() {
   const filterBars = document.querySelectorAll('.gallery-filter-bar');
@@ -548,12 +604,32 @@ function initGalleryFilter() {
 
         const filterValue = btn.getAttribute('data-filter');
 
+        let staggerIdx = 0;
         galleryItems.forEach(item => {
           const itemCategory = item.getAttribute('data-category') || '';
           const categories = itemCategory.split(/\s+/);
-          if (filterValue === 'all' || categories.includes(filterValue) || itemCategory.includes(filterValue)) {
+          const isMatch = (filterValue === 'all' || categories.includes(filterValue) || itemCategory.includes(filterValue));
+
+          if (isMatch) {
             item.style.display = 'block';
-            item.classList.add('animate-fade-up');
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(12px) scale(0.98)';
+            
+            setTimeout(() => {
+              item.style.transition = 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0) scale(1)';
+            }, staggerIdx * 35);
+
+            const img = item.querySelector('img');
+            if (img) {
+              const card = item.querySelector('.gallery-card');
+              if (img.complete && img.naturalWidth > 0) {
+                if (card) card.classList.add('is-loaded');
+                img.classList.add('is-loaded');
+              }
+            }
+            staggerIdx++;
           } else {
             item.style.display = 'none';
           }
@@ -771,5 +847,39 @@ function initLazyVideos() {
   });
 }
 
+/* ==========================================================================
+   16. Instagram Official Embed Processor
+   ========================================================================== */
+function initInstagramEmbeds() {
+  const processEmbeds = () => {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  };
 
+  if (window.instgrm) {
+    processEmbeds();
+  } else {
+    window.addEventListener('load', () => {
+      setTimeout(processEmbeds, 600);
+    });
+  }
+}
+
+/* ==========================================================================
+   17. Service Worker Progressive Caching Registration
+   ========================================================================== */
+function initServiceWorker() {
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then((reg) => {
+          console.log('Service Worker registered successfully. Scope:', reg.scope);
+        })
+        .catch((err) => {
+          console.log('Service Worker registration skipped or failed:', err);
+        });
+    });
+  }
+}
 

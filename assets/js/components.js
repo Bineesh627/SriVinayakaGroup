@@ -170,4 +170,13 @@
   } else {
     renderContainers();
   }
+
+  // Global safe fallback for Bitla Portal redirect
+  if (typeof window.redirectToBitla !== 'function') {
+    window.redirectToBitla = function (busName = 'Bangalore - Coorg Luxury AC Sleeper') {
+      const bitlaDirectUrl = 'https://www.simplybus.com/operator/sri-vinayaka-travels';
+      const bitlaSearchUrl = `https://www.simplybus.com/search?from=Bangalore&to=Coorg&service=${encodeURIComponent(busName)}`;
+      window.open(bitlaSearchUrl, '_blank', 'noopener,noreferrer');
+    };
+  }
 })();
