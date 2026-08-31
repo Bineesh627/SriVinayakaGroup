@@ -26,7 +26,7 @@
       <nav id="mainNavbar" class="navbar navbar-expand-lg sticky-top navbar-svg">
         <div class="container">
           <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="assets/images/logo.jpeg" alt="Sri Vinayaka Logo" class="me-2">
+            <img src="assets/images/logo.webp" alt="Sri Vinayaka Logo" class="me-2">
             <div class="brand-text">
               <span class="brand-title">Sri Vinayaka Group</span>
               <span class="brand-tagline">Driven by Trust</span>
@@ -61,7 +61,7 @@
             <!-- Col 1: Brand & Registered HQ -->
             <div class="col-lg-4">
               <div class="d-flex align-items-center mb-3">
-                <img src="assets/images/logo.jpeg" alt="Sri Vinayaka Group" style="height: 44px;" class="me-2 rounded">
+                <img src="assets/images/logo.webp" alt="Sri Vinayaka Group" style="height: 44px;" class="me-2 rounded">
                 <span class="h4 font-heading text-white mb-0 fw-bold">Sri Vinayaka Group</span>
               </div>
               <p class="small text-white-50 mb-3">

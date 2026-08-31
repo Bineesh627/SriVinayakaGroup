@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   safeInit(initGalleryFilter);
   safeInit(initGalleryLightbox);
   safeInit(initRouteSchedule);
+  safeInit(initLazyVideos);
 });
 
 /* ==========================================================================
@@ -723,5 +724,52 @@ function initRouteSchedule() {
     });
   }
 }
+
+/* ==========================================================================
+   18. On-Demand Lazy Video Player (0 KB Initial Network Overhead)
+   ========================================================================== */
+function initLazyVideos() {
+  const videoContainers = document.querySelectorAll('.video-player-container');
+  if (!videoContainers.length) return;
+
+  videoContainers.forEach(container => {
+    const video = container.querySelector('video');
+    const playOverlay = container.querySelector('.video-play-overlay');
+    if (!video) return;
+
+    const startPlayback = () => {
+      const source = video.querySelector('source[data-src]');
+      if (source && !source.src) {
+        source.src = source.dataset.src;
+        video.load();
+      }
+      container.classList.add('is-playing');
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.log('Video playback stream ready:', err);
+        });
+      }
+    };
+
+    if (playOverlay) {
+      playOverlay.addEventListener('click', (e) => {
+        e.stopPropagation();
+        startPlayback();
+      });
+      playOverlay.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          startPlayback();
+        }
+      });
+    }
+
+    video.addEventListener('play', () => {
+      container.classList.add('is-playing');
+    });
+  });
+}
+
 
 
