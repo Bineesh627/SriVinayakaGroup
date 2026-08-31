@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const safeInit = (fn) => {
     try { fn(); } catch (err) { console.warn('Init error in ' + fn.name, err); }
   };
-  
+
   safeInit(initActiveNavHighlight);
   safeInit(initNavbarScroll);
   safeInit(initParcelEstimator);
@@ -153,7 +153,7 @@ function initSeatSelector() {
   seatButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const seatNo = btn.getAttribute('data-seat');
-      
+
       if (btn.classList.contains('selected')) {
         btn.classList.remove('selected');
         selectedSeats = selectedSeats.filter(s => s !== seatNo);
@@ -406,12 +406,12 @@ function initCounterAnimation() {
         const el = entry.target;
         const text = el.textContent.trim();
         const numMatch = text.match(/([0-9.]+)/);
-        
+
         if (numMatch) {
           const targetNum = parseFloat(numMatch[1]);
           const isDecimal = targetNum % 1 !== 0;
           const suffixSpan = el.querySelector('span')?.outerHTML || '';
-          
+
           let currentNum = 0;
           const duration = 1500; // ms
           const steps = 30;
@@ -533,35 +533,46 @@ function initMobileNavbar() {
 }
 
 /* ==========================================================================
-   14. Progressive Sequential 1-by-1 Image Loader (Fast & Resilient)
+   14. Progressive Mobile-First 1-by-1 Image Loader (Zero-Lag & Instant Shimmer)
    ========================================================================== */
 function initProgressiveGalleryLoader() {
-  const galleryImgs = Array.from(document.querySelectorAll('.gallery-card img'));
-  if (!galleryImgs.length) return;
+  const galleryCards = Array.from(document.querySelectorAll('.gallery-card'));
+  if (!galleryCards.length) return;
 
-  const markLoaded = (img) => {
-    const card = img.closest('.gallery-card');
+  const markLoaded = (card, img) => {
     if (card) card.classList.add('is-loaded');
-    img.classList.add('is-loaded');
+    if (img) img.classList.add('is-loaded');
   };
 
-  const loadImage = (img) => {
+  const loadSingleImage = (card) => {
+    const img = card.querySelector('img');
+    if (!img) return Promise.resolve();
+
+    if (img.complete && img.naturalWidth > 0) {
+      markLoaded(card, img);
+      return Promise.resolve();
+    }
+
     return new Promise((resolve) => {
-      if (img.complete && img.naturalWidth > 0) {
-        markLoaded(img);
+      const onDone = () => {
+        markLoaded(card, img);
         resolve();
+      };
+
+      if (img.complete && img.naturalWidth > 0) {
+        onDone();
         return;
       }
 
       img.addEventListener('load', () => {
-        markLoaded(img);
-        resolve();
+        if (img.decode) {
+          img.decode().then(onDone).catch(onDone);
+        } else {
+          onDone();
+        }
       }, { once: true });
 
-      img.addEventListener('error', () => {
-        markLoaded(img);
-        resolve();
-      }, { once: true });
+      img.addEventListener('error', onDone, { once: true });
 
       if (!img.src && img.dataset.src) {
         img.src = img.dataset.src;
@@ -569,20 +580,34 @@ function initProgressiveGalleryLoader() {
     });
   };
 
-  // Immediate load for first 6 images to populate viewport instantly
-  galleryImgs.slice(0, 6).forEach(img => loadImage(img));
+  // 1. Immediately load first 6 cards (visible above fold on mobile & desktop)
+  galleryCards.slice(0, 6).forEach(card => loadSingleImage(card));
 
-  // Sequential 1-by-1 queue with smooth 35ms stagger for remaining images
+  // 2. Viewport-driven loader: As soon as a card is within 300px of viewport on mobile/desktop, load it
+  if ('IntersectionObserver' in window) {
+    const cardObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadSingleImage(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '300px 0px 300px 0px', threshold: 0.01 });
+
+    galleryCards.forEach(card => cardObserver.observe(card));
+  }
+
+  // 3. Staggered background queue: Sequentially fetch remaining images 1-by-1 with 30ms delay
   let queueIndex = 0;
-  function processQueue() {
-    if (queueIndex >= galleryImgs.length) return;
-    const img = galleryImgs[queueIndex++];
-    loadImage(img).then(() => {
-      setTimeout(processQueue, 35);
+  function processBackgroundQueue() {
+    if (queueIndex >= galleryCards.length) return;
+    const card = galleryCards[queueIndex++];
+    loadSingleImage(card).then(() => {
+      setTimeout(processBackgroundQueue, 30);
     });
   }
 
-  setTimeout(processQueue, 100);
+  setTimeout(processBackgroundQueue, 150);
 }
 
 /* ==========================================================================
@@ -614,7 +639,7 @@ function initGalleryFilter() {
             item.style.display = 'block';
             item.style.opacity = '0';
             item.style.transform = 'translateY(12px) scale(0.98)';
-            
+
             setTimeout(() => {
               item.style.transition = 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
               item.style.opacity = '1';

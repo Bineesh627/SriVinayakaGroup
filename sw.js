@@ -44,12 +44,15 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch Event - Stale-while-revalidate for static assets, Network-first for HTML
+// Fetch Event - Stale-while-revalidate for local assets, Network-first for HTML
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Skip cross-origin non-GET requests
+  // Skip cross-origin requests (CDNs, Google Fonts, Instagram embeds)
+  if (url.origin !== location.origin) return;
+
+  // Skip non-GET requests
   if (request.method !== 'GET') return;
 
   // For HTML documents: Network first, fallback to Cache, then 404
