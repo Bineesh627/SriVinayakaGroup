@@ -68,7 +68,7 @@
                 South India's preferred mobility, logistics, and holiday tour provider. Connecting Bangalore, Coorg, Mysore, and major regional hubs with safety, speed, and trust.
               </p>
               <div class="small text-white-50 mb-2">
-                <i class="bi bi-geo-alt-fill text-warning me-1"></i><strong>Head Office:</strong> <a href="https://maps.app.goo.gl/wQY96wuksRgB2jsd8?g_st=ic" target="_blank" rel="noopener" class="text-white-50 text-decoration-none">Arji Village, Kallubane, Virajpet, Coorg, Karnataka - 571218 <i class="bi bi-box-arrow-up-right small text-warning ms-1"></i></a>
+                <i class="bi bi-geo-alt-fill text-warning me-1"></i><strong>Head Office:</strong> <a href="https://maps.app.goo.gl/wQY96wuksRgB2jsd8?g_st=ic" target="_blank" rel="noopener" class="text-white-50 text-decoration-none">Sri Vinayaka Tours and Travels, Opp to KSRTC Bus Stand, Virajpet - 571218 <i class="bi bi-box-arrow-up-right small text-warning ms-1"></i></a>
               </div>
               <div class="small text-white-50 mb-3">
                 <i class="bi bi-envelope-fill text-warning me-1"></i><a href="mailto:ruthwick20@gmail.com" class="text-white-50 text-decoration-none">ruthwick20@gmail.com</a>
@@ -108,8 +108,7 @@
             <!-- Col 4: Booking & Helplines -->
             <div class="col-lg-3">
               <h5 class="footer-title font-heading">Contact & Booking</h5>
-              <p class="small text-white-50 mb-2"><i class="bi bi-telephone-fill text-warning me-1"></i><strong>Helpline:</strong> 9448325657 / 9187487973 / 9036270239</p>
-              <p class="small text-white-50 mb-3"><i class="bi bi-credit-card-fill text-warning me-1"></i><strong>E-Payment Support:</strong> 6366967218</p>
+              <p class="small text-white-50 mb-3"><i class="bi bi-telephone-fill text-warning me-1"></i><strong>Helpline:</strong> 9448325657 / 9187487973 / 9036270239</p>
               <div class="d-flex flex-column gap-2">
                 <button onclick="redirectToBitla()" class="btn btn-gold btn-sm w-100 justify-content-center">
                   <i class="bi bi-box-arrow-up-right me-1"></i>Book on Bitla Portal

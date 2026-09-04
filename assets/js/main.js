@@ -180,7 +180,7 @@ function initSeatSelector() {
  */
 function redirectToBitla(busName = 'Bangalore - Coorg Luxury AC Sleeper') {
   const seatInfo = selectedSeats.length > 0 ? ` (Seats: ${selectedSeats.join(', ')})` : '';
-  const bitlaUrl = 'https://www.bitlabooking.com';
+  const bitlaUrl = 'https://www.srivinayakabus.com';
   showToast(`Redirecting to Bitla Booking Engine for ${busName}${seatInfo}...`, 'info');
   setTimeout(() => {
     window.open(bitlaUrl, '_blank');
