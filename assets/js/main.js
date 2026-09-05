@@ -668,7 +668,7 @@ function initGalleryFilter() {
    16. Gallery Lightbox Modal Viewer
    ========================================================================== */
 function initGalleryLightbox() {
-  const galleryCards = document.querySelectorAll('.gallery-card');
+  const galleryCards = document.querySelectorAll('.gallery-card, .trip-photo-card');
   const lightboxModal = document.getElementById('galleryLightboxModal');
   const lightboxImg = document.getElementById('lightboxImage');
   const lightboxCaption = document.getElementById('lightboxCaption');
@@ -678,8 +678,9 @@ function initGalleryLightbox() {
   galleryCards.forEach(card => {
     card.addEventListener('click', () => {
       const img = card.querySelector('img');
-      const title = card.querySelector('.gallery-overlay-title')?.textContent || '';
-      const sub = card.querySelector('.gallery-overlay-sub')?.textContent || '';
+      const parentCard = card.closest('.video-testimonial-card');
+      const title = card.querySelector('.gallery-overlay-title')?.textContent || parentCard?.querySelector('h5')?.textContent || '';
+      const sub = card.querySelector('.gallery-overlay-sub')?.textContent || parentCard?.querySelector('p')?.textContent || '';
 
       if (img) {
         lightboxImg.src = img.src;
