@@ -99,9 +99,9 @@
               <ul class="footer-links">
                 <li><a href="sleeper-services.html">Bangalore ↔ Coorg Sleeper</a></li>
                 <li><a href="logistics.html">Express Overnight Cargo</a></li>
-                <li><a href="tours.html">Coorg & Mysore Holiday Tours</a></li>
-                <li><a href="tours.html#charter">Corporate & Group Bus Hire</a></li>
-                <li><a href="sleeper-services.html#timetable">24 Boarding Points Timetable</a></li>
+                <li><a href="tours.html#weekend-getaways">Weekend Getaway Trips</a></li>
+                <li><a href="tours.html#school-trips">School & College Tours</a></li>
+                <li><a href="tours.html#tour-bus-gallery">Tour Bus Fleet Gallery</a></li>
               </ul>
             </div>
 
