@@ -32,12 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
    1. Active Navigation Highlight
    ========================================================================== */
 function initActiveNavHighlight() {
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const normalizePage = (path) => {
+    if (!path) return 'index';
+    const clean = path.split('?')[0].split('#')[0].replace(/^\/+|\/+$/g, '');
+    const lastSegment = clean.split('/').pop() || '';
+    const page = lastSegment.replace(/\.html$/i, '').toLowerCase().trim();
+    if (page === '' || page === 'index') return 'index';
+    if (page === 'sleeper') return 'sleeper-services';
+    if (page === 'tour') return 'tours';
+    return page;
+  };
+
+  const currentPage = normalizePage(window.location.pathname);
   const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
   navLinks.forEach(link => {
     const linkHref = link.getAttribute('href');
-    if (linkHref === currentPath || (currentPath === '' && linkHref === 'index.html')) {
+    if (normalizePage(linkHref) === currentPage) {
       link.classList.add('active');
     } else {
       link.classList.remove('active');

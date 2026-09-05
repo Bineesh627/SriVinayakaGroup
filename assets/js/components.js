@@ -4,8 +4,20 @@
  */
 
 (function () {
+  function normalizePage(path) {
+    if (!path) return 'index';
+    const clean = path.split('?')[0].split('#')[0].replace(/^\/+|\/+$/g, '');
+    const lastSegment = clean.split('/').pop() || '';
+    const page = lastSegment.replace(/\.html$/i, '').toLowerCase().trim();
+    if (page === '' || page === 'index') return 'index';
+    if (page === 'sleeper') return 'sleeper-services';
+    if (page === 'tour') return 'tours';
+    return page;
+  }
+
   function getNavbarHTML() {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPage = normalizePage(window.location.pathname);
+    const isPage = (name) => currentPage === normalizePage(name);
 
     return `
       <!-- Top Announcement Bar -->
@@ -39,12 +51,12 @@
 
           <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-              <li class="nav-item"><a class="nav-link ${currentPath === 'index.html' || currentPath === '' ? 'active' : ''}" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link ${currentPath === 'about.html' ? 'active' : ''}" href="about.html">About Us</a></li>
-              <li class="nav-item"><a class="nav-link ${currentPath === 'sleeper-services.html' ? 'active' : ''}" href="sleeper-services.html">Sleeper Bus</a></li>
-              <li class="nav-item"><a class="nav-link ${currentPath === 'logistics.html' ? 'active' : ''}" href="logistics.html">Logistics & Cargo</a></li>
-              <li class="nav-item"><a class="nav-link ${currentPath === 'tours.html' ? 'active' : ''}" href="tours.html">Tours & Charters</a></li>
-              <li class="nav-item"><a class="nav-link ${currentPath === 'contact.html' ? 'active' : ''}" href="contact.html">Contact & Branches</a></li>
+              <li class="nav-item"><a class="nav-link ${isPage('index') ? 'active' : ''}" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link ${isPage('about') ? 'active' : ''}" href="about.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link ${isPage('sleeper-services') ? 'active' : ''}" href="sleeper-services.html">Sleeper Bus</a></li>
+              <li class="nav-item"><a class="nav-link ${isPage('logistics') ? 'active' : ''}" href="logistics.html">Logistics & Cargo</a></li>
+              <li class="nav-item"><a class="nav-link ${isPage('tours') ? 'active' : ''}" href="tours.html">Tours & Charters</a></li>
+              <li class="nav-item"><a class="nav-link ${isPage('contact') ? 'active' : ''}" href="contact.html">Contact & Branches</a></li>
             </ul>
           </div>
         </div>
