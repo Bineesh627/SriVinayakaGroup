@@ -76,14 +76,12 @@ function initNavbarScroll() {
 }
 
 /* ==========================================================================
-   3. Interactive Freight Logistics Estimator (With Insurance Option)
+   3. Interactive Freight Logistics Estimator (Flat ₹5/kg, No Extra Charge)
    ========================================================================== */
 function initParcelEstimator() {
   const weightInput = document.getElementById('parcelWeight');
   const weightValSpan = document.getElementById('weightVal');
-  const typeSelect = document.getElementById('parcelType');
   const routeSelect = document.getElementById('parcelRoute');
-  const insuranceCheck = document.getElementById('parcelInsurance');
   const estimatedPriceSpan = document.getElementById('estimatedPrice');
   const estimatedTimeSpan = document.getElementById('estimatedTime');
 
@@ -91,33 +89,37 @@ function initParcelEstimator() {
 
   function calculateRate() {
     const weight = parseFloat(weightInput.value) || 1;
-    const typeMultiplier = parseFloat(typeSelect ? typeSelect.value : 1);
-    const baseRouteRate = parseFloat(routeSelect ? routeSelect.value : 120);
-    const hasInsurance = insuranceCheck ? insuranceCheck.checked : false;
 
     if (weightValSpan) weightValSpan.textContent = `${weight} kg`;
 
-    let ratePerKg = 15;
-    if (weight > 20) ratePerKg = 12;
-    if (weight > 50) ratePerKg = 10;
-
-    let totalPrice = baseRouteRate + (weight * ratePerKg * typeMultiplier);
-    if (hasInsurance) totalPrice += 50; // Insurance fee
-
-    totalPrice = Math.round(totalPrice);
+    const ratePerKg = 5; // Flat ₹5 per kg, no extra charge
+    const totalPrice = Math.round(weight * ratePerKg);
 
     estimatedPriceSpan.textContent = `₹${totalPrice}`;
     if (estimatedTimeSpan) {
-      estimatedTimeSpan.textContent = typeSelect && typeSelect.value === '1.5' ? '⚡ Express Overnight (Arrival by 6:00 AM)' : 'Standard Overnight (Arrival by 8:00 AM)';
+      estimatedTimeSpan.textContent = 'Guaranteed Overnight Delivery (Arrival by 7:00 AM)';
     }
   }
 
   weightInput.addEventListener('input', calculateRate);
-  if (typeSelect) typeSelect.addEventListener('change', calculateRate);
   if (routeSelect) routeSelect.addEventListener('change', calculateRate);
-  if (insuranceCheck) insuranceCheck.addEventListener('change', calculateRate);
 
   calculateRate();
+}
+
+function bookParcelFromEstimator() {
+  const weightInput = document.getElementById('parcelWeight');
+  const routeSelect = document.getElementById('parcelRoute');
+  const weight = weightInput ? weightInput.value : '10';
+  const route = routeSelect ? routeSelect.value : 'Bangalore ↔ Coorg';
+  const totalPrice = Math.round(parseFloat(weight) * 5);
+
+  openEnquiryModal('Logistics Parcel Service', `Freight Booking (${weight} kg - ₹${totalPrice})`);
+
+  const enquiryNotes = document.getElementById('enquiryNotes');
+  if (enquiryNotes) {
+    enquiryNotes.value = `Route: ${route}\nEstimated Weight: ${weight} kg\nEstimated Total: ₹${totalPrice} (Flat ₹5/kg, No extra charge)`;
+  }
 }
 
 /* ==========================================================================
